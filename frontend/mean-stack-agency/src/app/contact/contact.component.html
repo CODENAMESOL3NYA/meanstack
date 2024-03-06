@@ -1,0 +1,47 @@
+<!-- Contact Section -->
+<section class="page-section" id="contact">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="mt-0">Let's Get In Touch!</h2>
+        <hr class="divider my-4">
+        <p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we
+          will get back to you as soon as possible!</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <form #contactForm ="ngForm" (ngSubmit)="handleSubmit(contactForm)">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">First name</label>
+            <span class="text-danger mx-1" *ngIf="firstname.touched &&firstname.hasError('required')">*Required</span>
+            <input type="text" #firstname="ngModel" minlength="3" maxlength="25" class="form-control" name="firstname" id="validationDefault01" required [value]="" ngModel >
+            <div class="text-danger" *ngIf="firstname.touched && firstname.hasError('minLength')">Minimum 2 characters</div>
+            <div class="text-danger" *ngIf="firstname.touched && firstname.hasError('maxLength')">Maximum 25 characters</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Last name</label>
+            <span class="text-danger mx-1" *ngIf="lastname.touched &&lastname.hasError('required')">*Required</span>
+            <input type="text" #lastname="ngModel" minlength="2" maxlength="25" class="form-control" name="lastname" id="validationDefault02" required [value]="" ngModel>
+            <div class="text-danger" *ngIf="lastname.touched && lastname.hasError('minLength')">Minimum 2 characters</div>
+            <div class="text-danger" *ngIf="lastname.touched && lastname.hasError('maxLength')">Maximum 25 characters</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault03">Phone</label>
+            <span class="text-danger mx-1" *ngIf="phone.touched &&phone.hasError('required')">*Required</span>
+            <input type="text" #phone="ngModel" minlength="10" class="form-control" name="phone" id="validationDefault03" required [value]="" ngModel >
+            <div class="text-danger" *ngIf="phone.touched && phone.hasError('minLength')">Minimum 2 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="messageFormControlTextarea1">Message</label>
+          <span class="text-danger mx-1" *ngIf="message.touched &&message.hasError('required')">*Required</span>
+          <textarea class="form-control" #message="ngModel" minlength="3" maxlength="100" name="message" id="messageFormControlTextarea1" rows="3" required [value]="" ngModel></textarea>
+          <div class="text-danger" *ngIf="message.touched && message.hasError('minLength')">Minimum 2 characters</div>
+          <div class="text-danger" *ngIf="message.touched && message.hasError('maxLength')">Maximum 100 characters</div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="contactForm.invalid">Submit form</button>
+      </form>
+    </div>
+  </div>
+</section>
